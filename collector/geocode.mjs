@@ -27,9 +27,46 @@ const US_STATES = new Set([
   'OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC',
 ]);
 
+// The model names places in free text, so the same city arrives spelled two ways
+// across batches ("New York" and "New York City") and would become two map pins.
+// Only exact aliases are listed: a general rule like stripping a trailing " City"
+// would wrongly rewrite Tahoe City, California City and Kansas City.
+const CITY_ALIASES = new Map(Object.entries({
+  'new york city': 'New York',
+  'nyc': 'New York',
+  'washington, dc': 'Washington',
+  'washington dc': 'Washington',
+  'washington d.c.': 'Washington',
+  'district of columbia': 'Washington',
+  'los angeles city': 'Los Angeles',
+  'san francisco city': 'San Francisco',
+  'philadelphia city': 'Philadelphia',
+  'boston city': 'Boston',
+  'chicago city': 'Chicago',
+}));
+
+// Also canonicalise the CASE of any city the alias table already names, so
+// "new york" and "New York" do not become two markers. Deliberately not a
+// general title-case pass, which would turn McAllen into Mcallen.
+const CANONICAL_CASE = new Map(
+  [...CITY_ALIASES.values()].map((name) => [name.toLowerCase(), name]),
+);
+
+const lookupKey = (value) => value.toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim();
+
+/** Canonical spelling for a city, so one place yields one marker. */
+export function canonicalCity(city) {
+  let c = (city || '').replace(/\s+/g, ' ').trim();
+  if (!c) return '';
+  c = c.replace(/^(?:the\s+)?(?:city|town|village|borough)\s+of\s+/i, '');
+  c = c.replace(/,?\s*(?:usa|u\.s\.a\.|united states)$/i, '').trim();
+  const key = lookupKey(c);
+  return CITY_ALIASES.get(key) || CANONICAL_CASE.get(key) || c;
+}
+
 /** A stable label for the place, and the string handed to the geocoder. */
 export function placeLabel(city, state) {
-  const c = (city || '').trim();
+  const c = canonicalCity(city);
   const s = (state || '').trim().toUpperCase();
   if (c && s) return `${c}, ${s}`;
   if (c) return c;
@@ -38,7 +75,7 @@ export function placeLabel(city, state) {
 }
 
 function queryFor(city, state) {
-  const c = (city || '').trim();
+  const c = canonicalCity(city);
   const s = (state || '').trim().toUpperCase();
   if (c && US_STATES.has(s)) return `${c}, ${s}, United States`;
   if (US_STATES.has(s)) return `${s}, United States`;
@@ -117,6 +154,7 @@ export async function geocodeItems(items, { log = console } = {}) {
   }
 
   for (const it of items) {
+    it.city = canonicalCity(it.city);
     const label = placeLabel(it.city, it.state);
     it.place = label;
     const hit = label ? cache[label] : null;
