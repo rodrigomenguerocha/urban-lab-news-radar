@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 
 import { readAll } from './feeds.mjs';
 import { classify, MODEL } from './classify.mjs';
+import { backfillImages } from './images.mjs';
 import { AREAS, hostOf, isPaywalled } from './sources.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -166,10 +167,17 @@ async function main() {
       url: c.url,
       date: c.published || '',           // the feed's date, never the model's guess
       summary,
+      image: c.image || '',
       tag: d.tag,
       found: today,
     });
   });
+
+  // Thumbnails are a nice-to-have: look for one only on the items just added.
+  if (added.length) {
+    console.log('\nLooking for thumbnails:');
+    await backfillImages(added, { log: console });
+  }
 
   // Merge, newest collection first, and prune very old entries.
   const cutoff = new Date(Date.now() - KEEP_DAYS * 864e5).toISOString().slice(0, 10);

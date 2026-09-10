@@ -2,8 +2,17 @@
 
 import Parser from 'rss-parser';
 import { USER_AGENT, SOURCES, hostOf } from './sources.mjs';
+import { imageFromEntry } from './images.mjs';
 
-const parser = new Parser();
+// Media fields are namespaced, so rss-parser only surfaces them when declared.
+const parser = new Parser({
+  customFields: {
+    item: [
+      ['media:content', 'media:content', { keepArray: true }],
+      ['media:thumbnail', 'media:thumbnail'],
+    ],
+  },
+});
 const FETCH_TIMEOUT_MS = 20_000;
 
 /** rss-parser's own timeout does not cover every stall, and a hung feed would hang
@@ -92,6 +101,7 @@ export async function readSource(source) {
       host: hostOf(url),
       published: isoDate(entry),
       snippet: snippetOf(entry, source),
+      image: imageFromEntry(entry, url),
       feed: source.id,
       headlineOnly: source.kind === 'gnews',
     });
