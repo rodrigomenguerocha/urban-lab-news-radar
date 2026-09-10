@@ -6,9 +6,11 @@
 //            outlets that block automated access, but it returns the headline only and
 //            links through a Google redirect (the publisher URL is not recoverable).
 
+// Identifies the collector honestly, with a contact URL, rather than posing as a
+// browser. Every feed in SOURCES was verified to answer 200 to this string, so the
+// browser user-agent this once carried bought nothing.
 export const USER_AGENT =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
-  '(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+  'urban-lab-news-radar/1.0 (+https://github.com/rodrigomenguerocha/urban-lab-news-radar)';
 
 export const AREAS = [
   'Culture Led Development',
@@ -46,6 +48,20 @@ export const SOURCES = [
     url: 'https://www.smartcitiesdive.com/feeds/news/' },
   { id: 'construction-dive', name: 'Construction Dive', kind: 'rss', cap: 25,
     url: 'https://www.constructiondive.com/feeds/news/' },
+
+  // ---- The New York Times, from the sections it publishes feeds for ----
+  // NYT's robots.txt disallows AI crawlers (ClaudeBot, anthropic-ai, GPTBot) from the
+  // site, so nothing here fetches an article page. These are the syndication feeds the
+  // paper publishes, read with an identified agent, and the summary shown is the
+  // paper's own blurb rather than a model's rewrite of its text.
+  { id: 'nyt-real-estate', name: 'The New York Times', kind: 'rss', cap: 25,
+    summaryFromFeed: true, url: 'https://rss.nytimes.com/services/xml/rss/nyt/RealEstate.xml' },
+  { id: 'nyt-climate', name: 'The New York Times', kind: 'rss', cap: 25,
+    summaryFromFeed: true, url: 'https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml' },
+  { id: 'nyt-ny-region', name: 'The New York Times', kind: 'rss', cap: 25,
+    summaryFromFeed: true, url: 'https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml' },
+  { id: 'nyt-economy', name: 'The New York Times', kind: 'rss', cap: 20,
+    summaryFromFeed: true, url: 'https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml' },
 
   // ---- discovery by research area ----
   { id: 'gn-public-private', name: 'Google News', kind: 'gnews', cap: 20,

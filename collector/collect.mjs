@@ -15,6 +15,7 @@ import { readAll } from './feeds.mjs';
 import { classify, MODEL } from './classify.mjs';
 import { backfillImages } from './images.mjs';
 import { geocodeItems } from './geocode.mjs';
+import { partition } from './prefilter.mjs';
 import { AREAS, hostOf, isPaywalled } from './sources.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -30,6 +31,7 @@ const value = (name, fallback) => {
 };
 
 const DRY_RUN = flag('--dry-run');
+const NO_PREFILTER = flag('--no-prefilter');
 const LIMIT = value('--limit', MAX_CANDIDATES);
 const today = new Date().toISOString().slice(0, 10);
 
@@ -115,9 +117,14 @@ async function main() {
     batchUrls.add(key);
     candidates.push(a);
   }
-  console.log(`\n${articles.length} fetched · ${articles.length - candidates.length} already known · ${candidates.length} new`);
+  // Free keyword gate before the paid screen, so the run's budget goes to plausible items.
+  const { kept, dropped } = NO_PREFILTER ? { kept: candidates, dropped: [] } : partition(candidates);
+  console.log(
+    `\n${articles.length} fetched · ${articles.length - candidates.length} already known · ` +
+    `${dropped.length} dropped by keyword gate · ${kept.length} to screen`,
+  );
 
-  const queue = interleave(candidates).slice(0, LIMIT);
+  const queue = interleave(kept).slice(0, LIMIT);
   if (queue.length < candidates.length) {
     console.log(`Capped at ${queue.length} candidates this run (raise with --limit).`);
   }
@@ -158,7 +165,10 @@ async function main() {
       return;
     }
     let summary = (d.summary || '').trim();
-    if (isPaywalled(c.url)) summary = '(paywall)';
+    if (c.summaryFromFeed && c.snippet) {
+      // The publisher wrote a blurb for syndication; show theirs, not a rewrite.
+      summary = c.snippet.length > 320 ? c.snippet.slice(0, 317).trimEnd() + '…' : c.snippet;
+    } else if (isPaywalled(c.url)) summary = '(paywall)';
     else if (c.headlineOnly && summary && summary.length < 40) summary = '';
 
     added.push({

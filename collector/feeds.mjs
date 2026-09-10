@@ -103,6 +103,7 @@ export async function readSource(source) {
       snippet: snippetOf(entry, source),
       image: imageFromEntry(entry, url),
       feed: source.id,
+      summaryFromFeed: source.summaryFromFeed === true,
       headlineOnly: source.kind === 'gnews',
     });
   }
