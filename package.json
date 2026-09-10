@@ -1,0 +1,20 @@
+{
+  "name": "urban-lab-news-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily news monitoring for the NYU Urban Lab's four research areas.",
+  "scripts": {
+    "collect": "node collector/collect.mjs",
+    "collect:dry": "node collector/collect.mjs --dry-run",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
+    "rss-parser": "^3.13.0",
+    "zod": "^4.6.1"
+  }
+}

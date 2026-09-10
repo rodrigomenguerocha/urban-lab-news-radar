@@ -1,0 +1,38 @@
+# Feeds RSS para o P3 News Agent - uma URL por linha, "#" comenta.
+# Uso: python p3_news_agent.py --feeds feeds.txt
+# Status verificado em 2026-09-10.
+
+# ---------------------------------------------------------------------------
+# 1. Buscas do Google News - melhor fonte de DESCOBERTA de P3.
+#    Atencao: entregam so a manchete (sem corpo). O agente detecta isso,
+#    marca "headline_only" e limita a confianca a 0.75.
+#    Edite o parametro q= para mudar a consulta.
+# ---------------------------------------------------------------------------
+https://news.google.com/rss/search?q=%22public-private+partnership%22+real+estate+development&hl=en-US&gl=US&ceid=US:en
+https://news.google.com/rss/search?q=%22P3%22+%22ground+lease%22+city+developer&hl=en-US&gl=US&ceid=US:en
+https://news.google.com/rss/search?q=city+%22RFP%22+developer+%22mixed-use%22+public+land&hl=en-US&gl=US&ceid=US:en
+https://news.google.com/rss/search?q=%22development+agreement%22+city+council+developer+%22city-owned%22&hl=en-US&gl=US&ceid=US:en
+https://news.google.com/rss/search?q=%22transit-oriented+development%22+%22joint+development%22+transit+authority&hl=en-US&gl=US&ceid=US:en
+
+# ---------------------------------------------------------------------------
+# 2. Veiculos setoriais - trazem o corpo do artigo no RSS, o que rende
+#    extracao muito melhor (parceiros, valores, estagio).
+# ---------------------------------------------------------------------------
+https://commercialobserver.com/feed/
+https://www.bisnow.com/rss
+https://www.route-fifty.com/rss/all/
+https://www.smartcitiesdive.com/feeds/news/
+https://www.constructiondive.com/feeds/news/
+
+# ---------------------------------------------------------------------------
+# 3. Relevantes, mas bloqueados por Cloudflare quando acessados por script
+#    (HTTP 403 / desafio de JS). Descomente se voce tiver acesso via proxy
+#    ou assinatura institucional.
+# ---------------------------------------------------------------------------
+# https://therealdeal.com/feed/
+# https://www.multihousingnews.com/feed/
+# https://www.commercialsearch.com/news/feed/
+# https://urbanland.uli.org/feed/
+# https://www.globest.com/feed/
+# https://rejournals.com/feed/
+# https://www.planetizen.com/rss.xml

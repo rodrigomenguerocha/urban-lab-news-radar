@@ -1,0 +1,5 @@
+# MVP do P3 Real Estate News Agent - Python 3.10+
+# (o SDK anthropic 1.x exige >= 3.10; a versao 1.4.0 foi a testada aqui)
+anthropic>=1.4.0,<2.0
+feedparser>=6.0.11
+pydantic>=2.7,<3.0
