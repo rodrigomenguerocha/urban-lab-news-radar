@@ -1,349 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Urban Lab News Radar</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="description" content="Daily press monitoring for the NYU Urban Lab across four research areas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
 <style>
-  /* NYU palette: official violet #57068c anchors the page; the four research
-     areas take NYU's secondary hues (violet, magenta, teal, blue), darkened for
-     contrast on light ground and lightened for dark. Neutrals carry a violet bias. */
+  /* Matches urbanlab.nyu.edu: white ground, black text, NYU violet #572b88 as the
+     only accent, and one typeface throughout. Gotham is NYU's brand face and is
+     listed first for machines that have it; Montserrat is the web stand-in. */
   :root {
-    --paper: #f7f5f9;
-    --surface: #ffffff;
-    --surface-sunk: #eee6f3;
-    --ink: #1b1420;
-    --muted: #5f5470;
-    --faint: #8d84a0;
-    --rule: #ded5e8;
-    --accent: #57068c;
-    --accent-soft: #eee6f3;
-    --tag-ppd: #57068c;
-    --tag-housing: #c00a5a;
-    --tag-culture: #00776a;
-    --tag-netzero: #2b7f9e;
-    --star: #a8951a;
-    --serif: "Newsreader", Georgia, "Times New Roman", serif;
-    --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #120e17;
-      --surface: #1a1521;
-      --surface-sunk: #241c2e;
-      --ink: #ece7f2;
-      --muted: #a59bb5;
-      --faint: #7d738d;
-      --rule: #2e2639;
-      --accent: #b58ad3;
-      --accent-soft: #2a1a3d;
-      --tag-ppd: #b58ad3;
-      --tag-housing: #ff5c9d;
-      --tag-culture: #00b8a2;
-      --tag-netzero: #59b2d1;
-      --star: #f4ec51;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #120e17;
-    --surface: #1a1521;
-    --surface-sunk: #241c2e;
-    --ink: #ece7f2;
-    --muted: #a59bb5;
-    --faint: #7d738d;
-    --rule: #2e2639;
-    --accent: #b58ad3;
-    --accent-soft: #2a1a3d;
-    --tag-ppd: #b58ad3;
-    --tag-housing: #ff5c9d;
-    --tag-culture: #00b8a2;
-    --tag-netzero: #59b2d1;
-    --star: #f4ec51;
+    color-scheme: light;
+    --white: #ffffff;
+    --ink: #000000;
+    --body: #333333;
+    --muted: #666666;
+    --faint: #949494;
+    --rule: #e2e2e2;
+    --rule-strong: #000000;
+    --violet: #572b88;
+    --violet-soft: #f4f0f8;
+    --sans: Gotham, Montserrat, Arial, Helvetica, sans-serif;
   }
 
   * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
     margin: 0;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--white);
+    color: var(--body);
     font-family: var(--sans);
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px 72px; }
 
-  .masthead {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px 24px;
-    padding: 34px 0 18px;
-    border-bottom: 2px solid var(--accent);
-  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px 96px; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { padding: 46px 0 0; }
+
   .eyebrow {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 9px;
-  }
-  .masthead h1 {
-    font-family: var(--serif);
-    font-size: 34px;
+    margin: 0 0 14px;
+    font-size: 11px;
     font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.015em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--violet);
+  }
+
+  h1 {
     margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
     text-wrap: balance;
   }
-  .masthead .blurb {
-    margin: 7px 0 0;
-    color: var(--muted);
-    font-size: 13.5px;
-    max-width: 52ch;
+
+  .blurb {
+    margin: 12px 0 0;
+    max-width: 60ch;
+    font-size: 15px;
+    color: var(--body);
   }
-  .tally { display: flex; gap: 22px; font-family: var(--mono); font-variant-numeric: tabular-nums; }
-  .tally div { text-align: right; }
-  .tally b { display: block; font-size: 22px; font-weight: 500; line-height: 1.1; }
-  .tally span {
+
+  .tallies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 26px 0 0;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .tallies div { min-width: 74px; }
+  .tallies b {
     display: block;
-    font-size: 10px;
-    letter-spacing: 0.09em;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .tallies span {
+    display: block;
+    margin-top: 6px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 3px;
   }
 
-  .statusbar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--mono);
+  .status {
+    margin: 16px 0 0;
     font-size: 11.5px;
-    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--faint);
   }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--faint); flex: none; }
-  .statusbar.live .dot { background: var(--tag-culture); }
-  .statusbar.stale .dot { background: var(--tag-housing); }
+  .status.stale { color: var(--violet); }
+
+  /* ---------- controls ---------- */
 
   .controls {
+    margin: 30px 0 0;
+    padding: 0 0 18px;
+    border-bottom: 2px solid var(--rule-strong);
+  }
+  .controls .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--rule);
+    gap: 10px;
   }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .controls .row + .row { margin-top: 10px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
   button.chip, .toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: var(--sans);
-    font-size: 12.5px;
-    font-weight: 500;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--muted);
-    background: transparent;
+    background: var(--white);
     border: 1px solid var(--rule);
-    border-radius: 2px;
-    padding: 5px 11px;
+    border-radius: 0;
+    padding: 7px 13px;
     cursor: pointer;
     transition: color .12s, border-color .12s, background .12s;
   }
   button.chip:hover, .toggle:hover { color: var(--ink); border-color: var(--muted); }
-  button.chip[aria-pressed="true"] { color: var(--ink); border-color: currentColor; background: var(--surface); }
-  button.chip .swatch { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
-  button.chip .n { font-family: var(--mono); opacity: .6; font-variant-numeric: tabular-nums; }
-  .toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
-  .spacer { flex: 1 1 30px; }
-  .search, select.src {
-    font-family: var(--sans);
-    font-size: 12.5px;
-    color: var(--ink);
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: 2px;
-    padding: 6px 9px;
+  button.chip[aria-pressed="true"] {
+    color: var(--white);
+    background: var(--violet);
+    border-color: var(--violet);
   }
-  .search { width: 170px; }
-  select.src { color: var(--muted); max-width: 165px; }
-  .search::placeholder { color: var(--faint); }
-  .search:focus-visible, button:focus-visible, a:focus-visible, select:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
+  button.chip .n { margin-left: 7px; opacity: .7; font-variant-numeric: tabular-nums; }
+  .toggle[aria-pressed="true"] {
+    color: var(--violet);
+    border-color: var(--violet);
+    background: var(--violet-soft);
   }
 
-  .daygroup > .dayhead {
-    position: sticky;
-    top: 0;
-    z-index: 2;
+  .spacer { flex: 1 1 24px; }
+
+  .search, select.src {
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 7px 10px;
+  }
+  .search { width: 180px; }
+  select.src { color: var(--muted); max-width: 180px; }
+  .search::placeholder { color: var(--faint); }
+  :is(.search, button, a, select, input):focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: 2px;
+  }
+
+  /* ---------- the list ---------- */
+
+  .dayhead {
     display: flex;
     align-items: baseline;
-    gap: 10px;
-    padding: 20px 0 7px;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    gap: 12px;
+    margin: 0;
+    padding: 30px 0 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
   }
-  .dayhead .count { color: var(--faint); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+  .dayhead .count { color: var(--faint); letter-spacing: 0.06em; font-weight: 500; }
 
   .entry {
     display: grid;
-    grid-template-columns: 3px 1fr auto;
-    gap: 0 16px;
-    align-items: start;
-    padding: 15px 0 16px;
-    border-bottom: 1px solid var(--rule);
+    grid-template-columns: 1fr;
+    gap: 0 26px;
+    padding: 24px 0 26px;
+    border-top: 1px solid var(--rule);
   }
-  .entry .stripe { align-self: stretch; background: currentColor; border-radius: 2px; }
-  .entry.done .body { opacity: .45; }
-  .entry .body { min-width: 0; }
-  .entry .headline {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: -0.006em;
+  .entry.has-thumb { grid-template-columns: 1fr 104px; }
+  .entry.read .text { opacity: .45; }
+
+  .text { min-width: 0; }
+
+  .headline {
+    display: block;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -0.005em;
     color: var(--ink);
     text-decoration: none;
     text-wrap: pretty;
-    display: block;
   }
-  .entry .headline:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  .entry.done .headline { font-style: italic; }
-  .entry .summary {
-    margin: 5px 0 0;
-    color: var(--muted);
-    font-size: 13.5px;
-    line-height: 1.45;
-    max-width: 74ch;
+  .headline:hover { color: var(--violet); }
+  .entry.read .headline { font-weight: 500; }
+
+  .summary {
+    margin: 9px 0 0;
+    max-width: 76ch;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--body);
   }
-  .entry .summary.pw { font-family: var(--mono); font-size: 11.5px; color: var(--faint); }
-  .meta {
+  .summary.paywall {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .tagline {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 5px 9px;
-    margin-top: 8px;
-    font-family: var(--mono);
-    font-size: 11.5px;
+    align-items: baseline;
+    gap: 6px 14px;
+    margin: 13px 0 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     color: var(--muted);
   }
-  .meta .sep { color: var(--rule); }
-  .meta .host { color: var(--faint); }
-  .meta .tag {
-    font-family: var(--sans);
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+  .tagline .area { color: var(--violet); font-weight: 700; }
+  .tagline .source { color: var(--ink); font-weight: 600; letter-spacing: 0.06em; }
+  .tagline .date { font-variant-numeric: tabular-nums; }
+
+  .acts { display: flex; gap: 2px; margin-left: auto; }
+  .act {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: currentColor;
-  }
-  .meta .source { color: var(--ink); font-weight: 500; }
-  .acts { display: flex; gap: 4px; }
-  .iconbtn {
-    font-family: var(--sans);
-    font-size: 11.5px;
     color: var(--faint);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    padding: 3px 7px;
+    background: none;
+    border: 0;
+    padding: 0 6px;
     cursor: pointer;
-    white-space: nowrap;
   }
-  .iconbtn:hover { color: var(--ink); border-color: var(--rule); }
-  .iconbtn[aria-pressed="true"] { color: var(--accent); }
-  .iconbtn.star[aria-pressed="true"] { color: var(--star); }
+  .act:hover { color: var(--ink); }
+  .act[aria-pressed="true"] { color: var(--violet); font-weight: 700; }
+
+  .thumb {
+    display: block;
+    width: 104px;
+    height: 104px;
+    object-fit: cover;
+    background: var(--violet-soft);
+    grid-row: 1;
+    grid-column: 2;
+  }
 
   .empty {
-    padding: 56px 0;
-    text-align: center;
-    color: var(--muted);
-    font-family: var(--serif);
-    font-size: 18px;
-  }
-  footer {
-    margin-top: 34px;
-    padding-top: 16px;
+    padding: 70px 0;
     border-top: 1px solid var(--rule);
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 1.75;
-    color: var(--faint);
+    text-align: center;
+    font-size: 17px;
+    color: var(--muted);
   }
-  footer b { color: var(--muted); font-weight: 500; }
-  footer a { color: var(--accent); }
-  @media (max-width: 640px) {
-    .masthead { padding-top: 26px; }
-    .masthead h1 { font-size: 27px; }
-    .tally { gap: 18px; }
-    .entry { grid-template-columns: 3px 1fr; }
-    .acts { grid-column: 2; margin-top: 8px; }
+
+  footer {
+    margin-top: 54px;
+    padding-top: 22px;
+    border-top: 2px solid var(--rule-strong);
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  footer b { color: var(--ink); font-weight: 600; }
+  footer a { color: var(--violet); }
+  footer p { margin: 0 0 8px; max-width: 82ch; }
+
+  @media (max-width: 660px) {
+    .wrap { padding: 0 18px 72px; }
+    .masthead { padding-top: 32px; }
+    h1 { font-size: 28px; }
+    .tallies { gap: 22px; }
+    .tallies b { font-size: 22px; }
+    .entry { padding: 20px 0 22px; }
+    .entry.has-thumb { grid-template-columns: 1fr 76px; }
+    .thumb { width: 76px; height: 76px; }
+    .headline { font-size: 17.5px; }
     .search, select.src { width: 100%; max-width: none; }
   }
+
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
+    * { transition: none !important; }
   }
 </style>
+</head>
+<body>
 
 <div class="wrap">
   <header class="masthead">
-    <div>
-      <p class="eyebrow">NYU Urban Lab · Schack Institute of Real Estate</p>
-      <h1>Urban Lab News Radar</h1>
-      <p class="blurb">Daily monitoring of press coverage across the Lab's four research areas. Each article is tagged to one area and carries its source, publication date and link.</p>
+    <p class="eyebrow">NYU Urban Lab &middot; Schack Institute of Real Estate</p>
+    <h1>Urban Lab News Radar</h1>
+    <p class="blurb">Daily monitoring of press coverage across the Lab's four research areas. Each article carries its source, publication date and link.</p>
+    <div class="tallies">
+      <div><b id="t-all">0</b><span>Articles</span></div>
+      <div><b id="t-unread">0</b><span>Unread</span></div>
+      <div><b id="t-src">0</b><span>Sources</span></div>
+      <div><b id="t-star">0</b><span>Starred</span></div>
     </div>
-    <div class="tally">
-      <div><b id="t-unread">0</b><span>unread</span></div>
-      <div><b id="t-all">0</b><span>articles</span></div>
-      <div><b id="t-src">0</b><span>sources</span></div>
-    </div>
+    <p class="status" id="status">Loading the collection&hellip;</p>
   </header>
 
-  <div class="statusbar" id="statusbar"><span class="dot"></span><span id="status">loading updates…</span></div>
-
   <div class="controls">
-    <div class="chips" id="tagchips"></div>
-    <div class="spacer"></div>
-    <select class="src" id="source" aria-label="Filter by source"><option value="">all sources</option></select>
-    <button class="toggle" id="unreadonly" type="button" aria-pressed="false">unread only</button>
-    <input class="search" id="q" type="search" placeholder="search city, agency…" aria-label="Search">
+    <div class="row"><div class="chips" id="chips"></div></div>
+    <div class="row">
+      <input class="search" id="q" type="search" placeholder="Search city, agency&hellip;" aria-label="Search articles">
+      <div class="spacer"></div>
+      <select class="src" id="source" aria-label="Filter by source"><option value="">All sources</option></select>
+      <button class="toggle" id="unreadonly" type="button" aria-pressed="false">Unread only</button>
+    </div>
   </div>
 
-  <main id="ledger"></main>
+  <main id="list"></main>
 
   <footer>
-    <b>Research areas.</b> Culture Led Development · Public Private Development · Housing Affordability · Net Zero Cities. Every article is filed under exactly one area.<br>
-    <b>Summaries.</b> Written from the article where it is readable. Marked <b>(paywall)</b> where the full text sits behind a subscription — the link still works if you are signed in.<br>
-    <b>Reading marks.</b> Kept in this browser only.<br>
-    <b>Pipeline.</b> Feeds are read daily, screened and summarised with the Anthropic API, then committed to this repository. Source, collector and history: <a href="https://github.com/rodrigomenguerocha/urban-lab-news-radar">github.com/rodrigomenguerocha/urban-lab-news-radar</a>.
+    <p><b>Research areas.</b> Culture Led Development &middot; Public Private Development &middot; Housing Affordability &middot; Net Zero Cities. Every article is filed under exactly one area.</p>
+    <p><b>Summaries.</b> Written from the article where its text is readable. Marked <b>paywall</b> where the full text sits behind a subscription &mdash; the link still works if you are signed in. Left blank where only the headline was available.</p>
+    <p><b>Thumbnails.</b> Taken from the feed or the article's own preview image where the publisher allows it. Most articles have none.</p>
+    <p><b>Pipeline.</b> Feeds are read daily, screened and summarised with the Anthropic API, then committed to <a href="https://github.com/rodrigomenguerocha/urban-lab-news-radar">this repository</a>. Reading marks are kept in this browser only.</p>
   </footer>
 </div>
-
 
 <script>
 (function () {
   "use strict";
 
-  var TAGS = [
-    { name: "Culture Led Development", short: "culture", varname: "--tag-culture" },
-    { name: "Public Private Development", short: "public-private", varname: "--tag-ppd" },
-    { name: "Housing Affordability", short: "housing", varname: "--tag-housing" },
-    { name: "Net Zero Cities", short: "net zero", varname: "--tag-netzero" }
+  var AREAS = [
+    "Culture Led Development",
+    "Public Private Development",
+    "Housing Affordability",
+    "Net Zero Cities"
   ];
   var LS_KEY = "urbanlab-radar-marks-v1";
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   var items = [];
-
+  var filters = { area: "", source: "", q: "", unread: false };
   var marks = { read: {}, starred: {} };
+
   try {
     var stored = localStorage.getItem(LS_KEY);
     if (stored) {
@@ -352,38 +370,38 @@
     }
   } catch (e) { /* storage blocked: run without saved marks */ }
 
-  var filters = { tag: "", source: "", q: "", unread: false };
-
   var el = {
-    ledger: document.getElementById("ledger"),
-    chips: document.getElementById("tagchips"),
+    list: document.getElementById("list"),
+    chips: document.getElementById("chips"),
     source: document.getElementById("source"),
     q: document.getElementById("q"),
     unread: document.getElementById("unreadonly"),
-    statusbar: document.getElementById("statusbar"),
     status: document.getElementById("status"),
-    tUnread: document.getElementById("t-unread"),
     tAll: document.getElementById("t-all"),
-    tSrc: document.getElementById("t-src")
+    tUnread: document.getElementById("t-unread"),
+    tSrc: document.getElementById("t-src"),
+    tStar: document.getElementById("t-star")
   };
 
-  function tagDef(name) {
-    for (var i = 0; i < TAGS.length; i++) if (TAGS[i].name === name) return TAGS[i];
-    return { name: name || "Unfiled", short: "unfiled", varname: "--muted" };
-  }
   function host(url) {
-    try { return new URL(url).hostname.replace(/^www\./, ""); } catch (e) { return ""; }
+    try {
+      var h = new URL(url).hostname.replace(/^www\./, "");
+      // A Google News link only names Google; the real publisher is already shown.
+      return h === "news.google.com" ? "" : h;
+    } catch (e) {
+      return "";
+    }
   }
   function fmtDate(iso) {
-    var f = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
-    if (f) return MONTHS[Number(f[2]) - 1] + " " + Number(f[3]) + ", " + f[1];
+    var d = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    if (d) return MONTHS[Number(d[2]) - 1] + " " + Number(d[3]) + ", " + d[1];
     var m = /^(\d{4})-(\d{2})$/.exec(iso || "");
     if (m) return MONTHS[Number(m[2]) - 1] + " " + m[1];
-    return "no date";
+    return "";
   }
   function fmtLong(iso) {
-    var f = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
-    return f ? MONTHS[Number(f[2]) - 1] + " " + Number(f[3]) + ", " + f[1] : (iso || "");
+    var d = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    return d ? MONTHS[Number(d[2]) - 1] + " " + Number(d[3]) + ", " + d[1] : (iso || "");
   }
   function byRecency(a, b) {
     if (a.found !== b.found) return a.found < b.found ? 1 : -1;
@@ -400,15 +418,14 @@
     }
     return out;
   }
-
   function persist() {
-    try { localStorage.setItem(LS_KEY, JSON.stringify(marks)); } catch (e) { /* storage blocked */ }
+    try { localStorage.setItem(LS_KEY, JSON.stringify(marks)); } catch (e) { /* no storage */ }
   }
 
   function visible() {
     var q = filters.q.trim().toLowerCase();
     return items.filter(function (it) {
-      if (filters.tag && it.tag !== filters.tag) return false;
+      if (filters.area && it.tag !== filters.area) return false;
       if (filters.source && it.source !== filters.source) return false;
       if (filters.unread && marks.read[it.id]) return false;
       if (q && (it.title + " " + it.source + " " + (it.summary || "")).toLowerCase().indexOf(q) === -1) return false;
@@ -416,36 +433,36 @@
     }).sort(byRecency);
   }
 
+  function chipButton(label, count, active, onClick) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.setAttribute("aria-pressed", String(active));
+    var name = document.createElement("span");
+    name.textContent = label;
+    b.appendChild(name);
+    var n = document.createElement("span");
+    n.className = "n";
+    n.textContent = count;
+    b.appendChild(n);
+    b.addEventListener("click", onClick);
+    return b;
+  }
+
   function renderChips() {
     var counts = {};
     items.forEach(function (it) { counts[it.tag] = (counts[it.tag] || 0) + 1; });
     el.chips.textContent = "";
-
-    var all = document.createElement("button");
-    all.type = "button";
-    all.className = "chip";
-    all.setAttribute("aria-pressed", String(filters.tag === ""));
-    all.innerHTML = '<span></span><span class="n"></span>';
-    all.firstChild.textContent = "all areas";
-    all.lastChild.textContent = items.length;
-    all.addEventListener("click", function () { filters.tag = ""; render(); });
-    el.chips.appendChild(all);
-
-    TAGS.forEach(function (t) {
-      if (!counts[t.name]) return;
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "chip";
-      b.style.color = "var(" + t.varname + ")";
-      b.setAttribute("aria-pressed", String(filters.tag === t.name));
-      b.innerHTML = '<span class="swatch"></span><span></span><span class="n"></span>';
-      b.childNodes[1].textContent = t.short;
-      b.childNodes[2].textContent = counts[t.name];
-      b.addEventListener("click", function () {
-        filters.tag = filters.tag === t.name ? "" : t.name;
+    el.chips.appendChild(chipButton("All areas", items.length, filters.area === "", function () {
+      filters.area = "";
+      render();
+    }));
+    AREAS.forEach(function (area) {
+      if (!counts[area]) return;
+      el.chips.appendChild(chipButton(area, counts[area], filters.area === area, function () {
+        filters.area = filters.area === area ? "" : area;
         render();
-      });
-      el.chips.appendChild(b);
+      }));
     });
   }
 
@@ -457,7 +474,7 @@
     el.source.textContent = "";
     var all = document.createElement("option");
     all.value = "";
-    all.textContent = "all sources";
+    all.textContent = "All sources";
     el.source.appendChild(all);
     list.forEach(function (n) {
       var o = document.createElement("option");
@@ -471,18 +488,12 @@
   }
 
   function entryNode(it) {
-    var t = tagDef(it.tag);
     var isRead = !!marks.read[it.id];
     var row = document.createElement("article");
-    row.className = "entry" + (isRead ? " done" : "");
-    row.style.color = "var(" + t.varname + ")";
+    row.className = "entry" + (isRead ? " read" : "") + (it.image ? " has-thumb" : "");
 
-    var stripe = document.createElement("div");
-    stripe.className = "stripe";
-    row.appendChild(stripe);
-
-    var body = document.createElement("div");
-    body.className = "body";
+    var text = document.createElement("div");
+    text.className = "text";
 
     var a = document.createElement("a");
     a.className = "headline";
@@ -490,44 +501,35 @@
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     a.textContent = it.title;
-    body.appendChild(a);
+    text.appendChild(a);
 
     if (it.summary) {
       var s = document.createElement("p");
-      s.className = "summary" + (it.summary === "(paywall)" ? " pw" : "");
-      s.textContent = it.summary;
-      body.appendChild(s);
+      s.className = "summary" + (it.summary === "(paywall)" ? " paywall" : "");
+      s.textContent = it.summary === "(paywall)" ? "Paywall" : it.summary;
+      text.appendChild(s);
     }
 
-    var meta = document.createElement("div");
-    meta.className = "meta";
-    var tag = document.createElement("span");
-    tag.className = "tag";
-    tag.textContent = t.short;
-    meta.appendChild(tag);
-    [["source", it.source], ["", fmtDate(it.date)], ["host", host(it.url)]].forEach(function (pair) {
-      if (!pair[1]) return;
-      var sep = document.createElement("span");
-      sep.className = "sep";
-      sep.textContent = "·";
-      meta.appendChild(sep);
-      var span = document.createElement("span");
-      if (pair[0]) span.className = pair[0];
-      span.textContent = pair[1];
-      meta.appendChild(span);
-    });
-    body.appendChild(meta);
-    row.appendChild(body);
+    var line = document.createElement("div");
+    line.className = "tagline";
+    [["area", it.tag], ["source", it.source], ["date", fmtDate(it.date)], ["host", host(it.url)]]
+      .forEach(function (pair) {
+        if (!pair[1]) return;
+        var span = document.createElement("span");
+        span.className = pair[0];
+        span.textContent = pair[1];
+        line.appendChild(span);
+      });
 
     var acts = document.createElement("div");
     acts.className = "acts";
 
     var star = document.createElement("button");
     star.type = "button";
-    star.className = "iconbtn star";
+    star.className = "act";
     star.setAttribute("aria-pressed", String(!!marks.starred[it.id]));
     star.setAttribute("aria-label", "Star this article");
-    star.textContent = marks.starred[it.id] ? "★" : "☆";
+    star.textContent = marks.starred[it.id] ? "★ Starred" : "☆ Star";
     star.addEventListener("click", function () {
       if (marks.starred[it.id]) delete marks.starred[it.id];
       else marks.starred[it.id] = true;
@@ -538,9 +540,9 @@
 
     var read = document.createElement("button");
     read.type = "button";
-    read.className = "iconbtn";
+    read.className = "act";
     read.setAttribute("aria-pressed", String(isRead));
-    read.textContent = isRead ? "read" : "mark read";
+    read.textContent = isRead ? "Read" : "Mark read";
     read.addEventListener("click", function () {
       if (marks.read[it.id]) delete marks.read[it.id];
       else marks.read[it.id] = true;
@@ -549,7 +551,26 @@
     });
     acts.appendChild(read);
 
-    row.appendChild(acts);
+    line.appendChild(acts);
+    text.appendChild(line);
+    row.appendChild(text);
+
+    if (it.image) {
+      var img = document.createElement("img");
+      img.className = "thumb";
+      img.src = it.image;
+      img.alt = "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.referrerPolicy = "no-referrer";
+      // A publisher that blocks hotlinking leaves a broken frame; drop it instead.
+      img.addEventListener("error", function () {
+        img.remove();
+        row.classList.remove("has-thumb");
+      });
+      row.appendChild(img);
+    }
+
     return row;
   }
 
@@ -557,44 +578,43 @@
     renderChips();
     renderSources();
     el.unread.setAttribute("aria-pressed", String(filters.unread));
-    el.tUnread.textContent = items.filter(function (it) { return !marks.read[it.id]; }).length;
     el.tAll.textContent = items.length;
+    el.tUnread.textContent = items.filter(function (it) { return !marks.read[it.id]; }).length;
+
+    el.tStar.textContent = items.filter(function (it) { return marks.starred[it.id]; }).length;
 
     var rows = visible();
-    el.ledger.textContent = "";
+    el.list.textContent = "";
     if (!rows.length) {
       var e = document.createElement("p");
       e.className = "empty";
       e.textContent = items.length ? "No articles match these filters." : "No articles collected yet.";
-      el.ledger.appendChild(e);
+      el.list.appendChild(e);
       return;
     }
 
-    var currentDay = null, group = null;
+    var currentDay = null;
     rows.forEach(function (it) {
       if (it.found !== currentDay) {
         currentDay = it.found;
-        group = document.createElement("section");
-        group.className = "daygroup";
         var head = document.createElement("h2");
         head.className = "dayhead";
         var when = document.createElement("span");
-        when.textContent = "collected " + (fmtLong(it.found) || "date unknown");
+        when.textContent = "Collected " + (fmtLong(it.found) || "date unknown");
         head.appendChild(when);
         var n = document.createElement("span");
         n.className = "count";
         n.textContent = rows.filter(function (x) { return x.found === currentDay; }).length + " items";
         head.appendChild(n);
-        group.appendChild(head);
-        el.ledger.appendChild(group);
+        el.list.appendChild(head);
       }
-      group.appendChild(entryNode(it));
+      el.list.appendChild(entryNode(it));
     });
   }
 
-  function setStatus(cls, text) {
-    el.statusbar.className = "statusbar" + (cls ? " " + cls : "");
+  function setStatus(text, stale) {
     el.status.textContent = text;
+    el.status.className = "status" + (stale ? " stale" : "");
   }
 
   el.q.addEventListener("input", function () { filters.q = el.q.value; render(); });
@@ -602,7 +622,6 @@
   el.unread.addEventListener("click", function () { filters.unread = !filters.unread; render(); });
 
   render();
-  setStatus("", "loading the collection…");
 
   fetch("data/articles.json", { cache: "no-cache" })
     .then(function (r) {
@@ -612,13 +631,14 @@
     .then(function (data) {
       items = dedupe(Array.isArray(data.items) ? data.items : []);
       render();
-      var updated = fmtLong(data.updated) || "unknown date";
       var model = data.model && data.model !== "curated" ? " · screened by " + data.model : "";
-      setStatus("live", "daily collection · last run " + updated + model);
+      setStatus("Last collection " + (fmtLong(data.updated) || "unknown") + model, false);
     })
     .catch(function (err) {
-      setStatus("stale", "could not load data/articles.json (" + err.message + ")");
+      setStatus("Could not load data/articles.json (" + err.message + ")", true);
     });
-
 })();
 </script>
+
+</body>
+</html>
