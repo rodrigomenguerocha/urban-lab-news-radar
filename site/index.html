@@ -196,12 +196,89 @@
 
   /* ---------- map ---------- */
 
-  #map {
-    height: 540px;
+  /* Two thirds map, one third the list of what is currently in view. */
+  .mapgrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
     margin-top: 22px;
+  }
+
+  #map {
+    height: 620px;
     border: 1px solid var(--rule);
     background: var(--violet-soft);
   }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    height: 620px;
+    min-width: 0;
+    border: 1px solid var(--rule);
+  }
+  .side-head {
+    flex: none;
+    padding: 13px 15px;
+    border-bottom: 2px solid var(--rule-strong);
+  }
+  .side-head b {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .side-head span {
+    display: block;
+    margin-top: 4px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .side-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
+
+  .side-place {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 9px 15px 7px;
+    background: var(--violet-soft);
+    border-bottom: 1px solid var(--rule);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--violet);
+  }
+  .side-place .n { float: right; color: var(--muted); font-weight: 500; }
+
+  .side-item { padding: 11px 15px 12px; border-bottom: 1px solid var(--rule); }
+  .side-item:hover { background: #fafafa; }
+  .side-item.read { opacity: .5; }
+  .side-item a {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .side-item a:hover { color: var(--violet); text-decoration: underline; }
+  .side-item .meta {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .side-empty { padding: 34px 18px; font-size: 13px; line-height: 1.5; color: var(--muted); text-align: center; }
   .mapnote {
     margin: 12px 0 0;
     font-size: 11.5px;
@@ -391,7 +468,10 @@
     .thumb { width: 76px; height: 76px; }
     .headline { font-size: 17.5px; }
     .search, select.src { width: 100%; max-width: none; }
-    #map { height: 400px; }
+    /* Stacked: the map keeps its aspect, the in-view list follows underneath. */
+    .mapgrid { grid-template-columns: 1fr; gap: 14px; }
+    #map { height: 380px; }
+    .side { height: 340px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -435,7 +515,16 @@
   <main>
     <div id="list"></div>
     <div id="mapview" hidden>
-      <div id="map"></div>
+      <div class="mapgrid">
+        <div id="map"></div>
+        <aside class="side" aria-label="Articles in view">
+          <div class="side-head">
+            <b id="side-count">In view</b>
+            <span id="side-hint">Pan and zoom the map to filter this list</span>
+          </div>
+          <div class="side-body" id="side-body"></div>
+        </aside>
+      </div>
       <p class="mapnote" id="mapnote"></p>
     </div>
   </main>
@@ -488,6 +577,9 @@
     viewMap: document.getElementById("view-map"),
     mapview: document.getElementById("mapview"),
     mapnote: document.getElementById("mapnote"),
+    sideBody: document.getElementById("side-body"),
+    sideCount: document.getElementById("side-count"),
+    sideHint: document.getElementById("side-hint"),
     status: document.getElementById("status"),
     tAll: document.getElementById("t-all"),
     tUnread: document.getElementById("t-unread"),
@@ -730,6 +822,7 @@
 
   var map = null;
   var markerLayer = null;
+  var mapGroups = [];
 
   function ensureMap() {
     if (map || typeof L === "undefined") return map;
@@ -744,6 +837,8 @@
       maxZoom: 18
     }).addTo(map);
     markerLayer = L.layerGroup().addTo(map);
+    // Panning or zooming changes what is in view, which is what the side list shows.
+    map.on("moveend zoomend", updateSideList);
     return map;
   }
 
@@ -796,9 +891,12 @@
 
     var keys = Object.keys(groups);
     var bounds = [];
-    keys.forEach(function (key) {
+    mapGroups = [];
+    keys.forEach(function (key, i) {
       var g = groups[key];
       var n = g.list.length;
+      g.index = i;
+      mapGroups.push(g);
       var marker = L.circleMarker([g.lat, g.lng], {
         radius: Math.min(26, 7 + Math.sqrt(n) * 4),
         color: "#ffffff",
@@ -808,6 +906,8 @@
       });
       marker.bindPopup(popupHtml(g.place, g.list), { maxWidth: 320, minWidth: 240 });
       marker.bindTooltip(g.place + " (" + n + ")", { direction: "top" });
+      // Clicking a pin brings its group to the top of the side list.
+      marker.on("click", function () { scrollSideTo(g.index); });
       marker.addTo(markerLayer);
       bounds.push([g.lat, g.lng]);
     });
@@ -815,12 +915,89 @@
     if (bounds.length > 1) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 9 });
     else if (bounds.length === 1) map.setView(bounds[0], 8);
 
+    updateSideList();
+
     var unplaced = rows.length - placed;
     el.mapnote.textContent = keys.length
       ? placed + " of " + rows.length + " articles mapped across " + keys.length +
         (keys.length === 1 ? " place" : " places") +
         (unplaced ? " · " + unplaced + " with no single place" : "")
       : "None of the articles in view have a place to map.";
+  }
+
+  function scrollSideTo(index) {
+    var target = el.sideBody.querySelector('[data-group="' + index + '"]');
+    if (!target) return;
+    el.sideBody.scrollTop = target.offsetTop - el.sideBody.offsetTop;
+  }
+
+  /** Renders the articles whose place currently sits inside the map viewport. */
+  function updateSideList() {
+    if (!map) return;
+    var bounds = map.getBounds();
+    var inView = mapGroups.filter(function (g) {
+      return bounds.contains([g.lat, g.lng]);
+    });
+
+    var total = inView.reduce(function (n, g) { return n + g.list.length; }, 0);
+    el.sideCount.textContent = total
+      ? total + (total === 1 ? " article in view" : " articles in view")
+      : "Nothing in view";
+    el.sideHint.textContent = inView.length
+      ? inView.length + (inView.length === 1 ? " place" : " places") + " · pan or zoom to change"
+      : "Pan or zoom the map to bring articles into view";
+
+    el.sideBody.textContent = "";
+    if (!inView.length) {
+      var empty = document.createElement("p");
+      empty.className = "side-empty";
+      empty.textContent = mapGroups.length
+        ? "No mapped article sits in this part of the map."
+        : "None of the articles in view have a place to map.";
+      el.sideBody.appendChild(empty);
+      return;
+    }
+
+    inView
+      .slice()
+      .sort(function (a, b) {
+        if (a.list.length !== b.list.length) return b.list.length - a.list.length;
+        return a.place.localeCompare(b.place);
+      })
+      .forEach(function (g) {
+        var block = document.createElement("section");
+        block.setAttribute("data-group", g.index);
+
+        var head = document.createElement("h3");
+        head.className = "side-place";
+        var n = document.createElement("span");
+        n.className = "n";
+        n.textContent = g.list.length;
+        head.appendChild(n);
+        head.appendChild(document.createTextNode(g.place));
+        block.appendChild(head);
+
+        g.list.slice().sort(byRecency).forEach(function (it) {
+          var row = document.createElement("div");
+          row.className = "side-item" + (marks.read[it.id] ? " read" : "");
+
+          var a = document.createElement("a");
+          a.href = it.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = it.title;
+          row.appendChild(a);
+
+          var meta = document.createElement("span");
+          meta.className = "meta";
+          meta.textContent = [it.tag, it.source, fmtDate(it.date)].filter(Boolean).join(" · ");
+          row.appendChild(meta);
+
+          block.appendChild(row);
+        });
+
+        el.sideBody.appendChild(block);
+      });
   }
 
   function setView(next) {
@@ -832,8 +1009,12 @@
     el.list.hidden = isMap;
     if (isMap) {
       renderMap(visible());
-      // Leaflet measures a hidden container as zero; re-measure once it is shown.
-      if (map) map.invalidateSize();
+      // Leaflet measures a hidden container as zero, and the side list is filtered
+      // by the viewport, so re-measure before deciding what is in view.
+      if (map) {
+        map.invalidateSize();
+        updateSideList();
+      }
     }
   }
 
