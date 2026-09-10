@@ -1,0 +1,78 @@
+{
+  "Asheville, NC": {
+    "lat": 35.5954,
+    "lng": -82.5508
+  },
+  "Austin, TX": {
+    "lat": 30.2711,
+    "lng": -97.7437
+  },
+  "Blaine, WA": {
+    "lat": 48.9881,
+    "lng": -122.7436
+  },
+  "Boca Raton, FL": {
+    "lat": 26.3587,
+    "lng": -80.0831
+  },
+  "Chicago, IL": {
+    "lat": 41.8756,
+    "lng": -87.6244
+  },
+  "CO": {
+    "lat": 38.7252,
+    "lng": -105.6077
+  },
+  "Detroit, MI": {
+    "lat": 42.3316,
+    "lng": -83.0466
+  },
+  "Hillsboro, OR": {
+    "lat": 45.5229,
+    "lng": -122.9898
+  },
+  "Lakewood, CO": {
+    "lat": 39.7086,
+    "lng": -105.0847
+  },
+  "Las Cruces, NM": {
+    "lat": 32.314,
+    "lng": -106.7798
+  },
+  "Leon County, FL": {
+    "lat": 30.4683,
+    "lng": -84.2549
+  },
+  "Linden, NJ": {
+    "lat": 40.622,
+    "lng": -74.2446
+  },
+  "Lisbon": {
+    "lat": 38.7078,
+    "lng": -9.1366
+  },
+  "New Carrollton, MD": {
+    "lat": 38.9698,
+    "lng": -76.88
+  },
+  "New York, NY": {
+    "lat": 40.7127,
+    "lng": -74.006
+  },
+  "Queens, NY": {
+    "lat": 40.7135,
+    "lng": -73.8283
+  },
+  "San Diego, CA": {
+    "lat": 32.7174,
+    "lng": -117.1628
+  },
+  "Seattle, WA": {
+    "lat": 47.6038,
+    "lng": -122.3301
+  },
+  "Whitewater, WI": {
+    "lat": 42.834,
+    "lng": -88.7307
+  }
+}

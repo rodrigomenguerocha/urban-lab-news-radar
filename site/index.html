@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   /* Matches urbanlab.nyu.edu: white ground, black text, NYU violet #572b88 as the
      only accent, and one typeface throughout. Gotham is NYU's brand face and is
@@ -155,6 +156,93 @@
 
   .spacer { flex: 1 1 24px; }
 
+  .reset {
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--violet);
+    background: none;
+    border: 0;
+    padding: 0 4px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .reset[hidden] { display: none; }
+
+  /* ---------- list / map tabs ---------- */
+
+  .views { display: flex; gap: 0; }
+  .view {
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 7px 16px;
+    cursor: pointer;
+  }
+  .view + .view { border-left: 0; }
+  .view[aria-selected="true"] {
+    color: var(--white);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* ---------- map ---------- */
+
+  #map {
+    height: 540px;
+    margin-top: 22px;
+    border: 1px solid var(--rule);
+    background: var(--violet-soft);
+  }
+  .mapnote {
+    margin: 12px 0 0;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .leaflet-container { font-family: var(--sans); font-size: 13px; }
+  .leaflet-popup-content-wrapper { border-radius: 0; box-shadow: 0 2px 14px rgba(0, 0, 0, .18); }
+  .leaflet-popup-content { margin: 14px 16px; max-height: 260px; overflow-y: auto; }
+  .pop-place {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--violet);
+  }
+  .pop-item { margin: 0 0 11px; }
+  .pop-item:last-child { margin-bottom: 0; }
+  .pop-item a {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .pop-item a:hover { color: var(--violet); text-decoration: underline; }
+  .pop-meta {
+    display: block;
+    margin-top: 3px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pop-more { margin: 10px 0 0; font-size: 11px; color: var(--faint); }
+
   .search, select.src {
     font-family: inherit;
     font-size: 13px;
@@ -242,7 +330,8 @@
     color: var(--muted);
   }
   .tagline .area { color: var(--violet); font-weight: 700; }
-  .tagline .source { color: var(--ink); font-weight: 600; letter-spacing: 0.06em; }
+  .tagline .place { color: var(--ink); font-weight: 600; letter-spacing: 0.06em; }
+  .tagline .source { color: var(--muted); font-weight: 500; }
   .tagline .date { font-variant-numeric: tabular-nums; }
 
   .acts { display: flex; gap: 2px; margin-left: auto; }
@@ -302,6 +391,7 @@
     .thumb { width: 76px; height: 76px; }
     .headline { font-size: 17.5px; }
     .search, select.src { width: 100%; max-width: none; }
+    #map { height: 400px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -326,8 +416,15 @@
   </header>
 
   <div class="controls">
-    <div class="row"><div class="chips" id="chips"></div></div>
     <div class="row">
+      <div class="chips" id="chips"></div>
+      <button class="reset" id="reset" type="button" hidden>Reset areas</button>
+    </div>
+    <div class="row">
+      <div class="views" role="tablist" aria-label="View">
+        <button class="view" id="view-list" type="button" role="tab" aria-selected="true">List</button>
+        <button class="view" id="view-map" type="button" role="tab" aria-selected="false">Map</button>
+      </div>
       <input class="search" id="q" type="search" placeholder="Search city, agency&hellip;" aria-label="Search articles">
       <div class="spacer"></div>
       <select class="src" id="source" aria-label="Filter by source"><option value="">All sources</option></select>
@@ -335,16 +432,24 @@
     </div>
   </div>
 
-  <main id="list"></main>
+  <main>
+    <div id="list"></div>
+    <div id="mapview" hidden>
+      <div id="map"></div>
+      <p class="mapnote" id="mapnote"></p>
+    </div>
+  </main>
 
   <footer>
     <p><b>Research areas.</b> Culture Led Development &middot; Public Private Development &middot; Housing Affordability &middot; Net Zero Cities. Every article is filed under exactly one area.</p>
     <p><b>Summaries.</b> Written from the article where its text is readable. Marked <b>paywall</b> where the full text sits behind a subscription &mdash; the link still works if you are signed in. Left blank where only the headline was available.</p>
+    <p><b>Places.</b> The city each article is about is read from the article, then resolved to coordinates by OpenStreetMap's Nominatim and cached. National and federal stories have no single place and do not appear on the map.</p>
     <p><b>Thumbnails.</b> Taken from the feed or the article's own preview image where the publisher allows it. Most articles have none.</p>
-    <p><b>Pipeline.</b> Feeds are read daily, screened and summarised with the Anthropic API, then committed to <a href="https://github.com/rodrigomenguerocha/urban-lab-news-radar">this repository</a>. Reading marks are kept in this browser only.</p>
+    <p><b>Pipeline.</b> Feeds are read daily, screened and summarised with the Anthropic API, then committed to <a href="https://github.com/rodrigomenguerocha/urban-lab-news-radar">this repository</a>. Reading marks are kept in this browser only. Basemap &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, tiles by <a href="https://carto.com/attributions">CARTO</a>.</p>
   </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function () {
   "use strict";
@@ -359,7 +464,9 @@
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   var items = [];
-  var filters = { area: "", source: "", q: "", unread: false };
+  // Every area starts selected; each chip toggles its own area.
+  var filters = { areas: new Set(AREAS), source: "", q: "", unread: false };
+  var view = "list";
   var marks = { read: {}, starred: {} };
 
   try {
@@ -376,6 +483,11 @@
     source: document.getElementById("source"),
     q: document.getElementById("q"),
     unread: document.getElementById("unreadonly"),
+    reset: document.getElementById("reset"),
+    viewList: document.getElementById("view-list"),
+    viewMap: document.getElementById("view-map"),
+    mapview: document.getElementById("mapview"),
+    mapnote: document.getElementById("mapnote"),
     status: document.getElementById("status"),
     tAll: document.getElementById("t-all"),
     tUnread: document.getElementById("t-unread"),
@@ -425,7 +537,7 @@
   function visible() {
     var q = filters.q.trim().toLowerCase();
     return items.filter(function (it) {
-      if (filters.area && it.tag !== filters.area) return false;
+      if (!filters.areas.has(it.tag)) return false;
       if (filters.source && it.source !== filters.source) return false;
       if (filters.unread && marks.read[it.id]) return false;
       if (q && (it.title + " " + it.source + " " + (it.summary || "")).toLowerCase().indexOf(q) === -1) return false;
@@ -453,17 +565,14 @@
     var counts = {};
     items.forEach(function (it) { counts[it.tag] = (counts[it.tag] || 0) + 1; });
     el.chips.textContent = "";
-    el.chips.appendChild(chipButton("All areas", items.length, filters.area === "", function () {
-      filters.area = "";
-      render();
-    }));
     AREAS.forEach(function (area) {
-      if (!counts[area]) return;
-      el.chips.appendChild(chipButton(area, counts[area], filters.area === area, function () {
-        filters.area = filters.area === area ? "" : area;
+      el.chips.appendChild(chipButton(area, counts[area] || 0, filters.areas.has(area), function () {
+        if (filters.areas.has(area)) filters.areas.delete(area);
+        else filters.areas.add(area);
         render();
       }));
     });
+    el.reset.hidden = filters.areas.size === AREAS.length;
   }
 
   function renderSources() {
@@ -512,7 +621,8 @@
 
     var line = document.createElement("div");
     line.className = "tagline";
-    [["area", it.tag], ["source", it.source], ["date", fmtDate(it.date)], ["host", host(it.url)]]
+    [["area", it.tag], ["place", it.place || ""], ["source", it.source],
+     ["date", fmtDate(it.date)], ["host", host(it.url)]]
       .forEach(function (pair) {
         if (!pair[1]) return;
         var span = document.createElement("span");
@@ -584,11 +694,15 @@
     el.tStar.textContent = items.filter(function (it) { return marks.starred[it.id]; }).length;
 
     var rows = visible();
+    if (view === "map") renderMap(rows);
+
     el.list.textContent = "";
     if (!rows.length) {
       var e = document.createElement("p");
       e.className = "empty";
-      e.textContent = items.length ? "No articles match these filters." : "No articles collected yet.";
+      e.textContent = !items.length ? "No articles collected yet."
+        : !filters.areas.size ? "No research area is selected."
+        : "No articles match these filters.";
       el.list.appendChild(e);
       return;
     }
@@ -612,6 +726,117 @@
     });
   }
 
+  // ---------- map ----------
+
+  var map = null;
+  var markerLayer = null;
+
+  function ensureMap() {
+    if (map || typeof L === "undefined") return map;
+    map = L.map("map", {
+      // The page scrolls, so the wheel must not be hijacked; use the zoom controls.
+      scrollWheelZoom: false,
+      worldCopyJump: true
+    }).setView([39.5, -98.35], 4);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 18
+    }).addTo(map);
+    markerLayer = L.layerGroup().addTo(map);
+    return map;
+  }
+
+  function popupHtml(place, list) {
+    var wrap = document.createElement("div");
+    var head = document.createElement("p");
+    head.className = "pop-place";
+    head.textContent = place + " · " + list.length + (list.length === 1 ? " article" : " articles");
+    wrap.appendChild(head);
+    list.slice(0, 8).forEach(function (it) {
+      var box = document.createElement("div");
+      box.className = "pop-item";
+      var a = document.createElement("a");
+      a.href = it.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = it.title;
+      box.appendChild(a);
+      var meta = document.createElement("span");
+      meta.className = "pop-meta";
+      meta.textContent = [it.tag, it.source, fmtDate(it.date)].filter(Boolean).join(" · ");
+      box.appendChild(meta);
+      wrap.appendChild(box);
+    });
+    if (list.length > 8) {
+      var more = document.createElement("p");
+      more.className = "pop-more";
+      more.textContent = "and " + (list.length - 8) + " more — filter by area or source to narrow it down";
+      wrap.appendChild(more);
+    }
+    return wrap;
+  }
+
+  function renderMap(rows) {
+    if (!ensureMap()) {
+      el.mapnote.textContent = "The map library could not be loaded.";
+      return;
+    }
+    markerLayer.clearLayers();
+
+    var groups = {};
+    var placed = 0;
+    rows.forEach(function (it) {
+      if (typeof it.lat !== "number" || typeof it.lng !== "number") return;
+      var key = it.place || (it.lat + "," + it.lng);
+      if (!groups[key]) groups[key] = { lat: it.lat, lng: it.lng, place: it.place || "Unnamed place", list: [] };
+      groups[key].list.push(it);
+      placed += 1;
+    });
+
+    var keys = Object.keys(groups);
+    var bounds = [];
+    keys.forEach(function (key) {
+      var g = groups[key];
+      var n = g.list.length;
+      var marker = L.circleMarker([g.lat, g.lng], {
+        radius: Math.min(26, 7 + Math.sqrt(n) * 4),
+        color: "#ffffff",
+        weight: 2,
+        fillColor: "#572b88",
+        fillOpacity: 0.82
+      });
+      marker.bindPopup(popupHtml(g.place, g.list), { maxWidth: 320, minWidth: 240 });
+      marker.bindTooltip(g.place + " (" + n + ")", { direction: "top" });
+      marker.addTo(markerLayer);
+      bounds.push([g.lat, g.lng]);
+    });
+
+    if (bounds.length > 1) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 9 });
+    else if (bounds.length === 1) map.setView(bounds[0], 8);
+
+    var unplaced = rows.length - placed;
+    el.mapnote.textContent = keys.length
+      ? placed + " of " + rows.length + " articles mapped across " + keys.length +
+        (keys.length === 1 ? " place" : " places") +
+        (unplaced ? " · " + unplaced + " with no single place" : "")
+      : "None of the articles in view have a place to map.";
+  }
+
+  function setView(next) {
+    view = next;
+    var isMap = next === "map";
+    el.viewMap.setAttribute("aria-selected", String(isMap));
+    el.viewList.setAttribute("aria-selected", String(!isMap));
+    el.mapview.hidden = !isMap;
+    el.list.hidden = isMap;
+    if (isMap) {
+      renderMap(visible());
+      // Leaflet measures a hidden container as zero; re-measure once it is shown.
+      if (map) map.invalidateSize();
+    }
+  }
+
   function setStatus(text, stale) {
     el.status.textContent = text;
     el.status.className = "status" + (stale ? " stale" : "");
@@ -620,6 +845,9 @@
   el.q.addEventListener("input", function () { filters.q = el.q.value; render(); });
   el.source.addEventListener("change", function () { filters.source = el.source.value; render(); });
   el.unread.addEventListener("click", function () { filters.unread = !filters.unread; render(); });
+  el.reset.addEventListener("click", function () { filters.areas = new Set(AREAS); render(); });
+  el.viewList.addEventListener("click", function () { setView("list"); });
+  el.viewMap.addEventListener("click", function () { setView("map"); });
 
   render();
 

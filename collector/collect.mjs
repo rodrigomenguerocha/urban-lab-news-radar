@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import { readAll } from './feeds.mjs';
 import { classify, MODEL } from './classify.mjs';
 import { backfillImages } from './images.mjs';
+import { geocodeItems } from './geocode.mjs';
 import { AREAS, hostOf, isPaywalled } from './sources.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -169,6 +170,8 @@ async function main() {
       summary,
       image: c.image || '',
       tag: d.tag,
+      city: (d.city || '').trim(),
+      state: (d.state || '').trim().toUpperCase(),
       found: today,
     });
   });
@@ -177,6 +180,11 @@ async function main() {
   if (added.length) {
     console.log('\nLooking for thumbnails:');
     await backfillImages(added, { log: console });
+  }
+
+  if (added.length) {
+    console.log('\nResolving places:');
+    await geocodeItems(added, { log: console });
   }
 
   // Merge, newest collection first, and prune very old entries.

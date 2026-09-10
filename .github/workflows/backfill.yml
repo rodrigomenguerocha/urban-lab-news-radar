@@ -1,0 +1,72 @@
+name: Backfill places and images
+
+# Run by hand after adding a field to the dataset. Fills in what the daily
+# collection now records but older articles are missing.
+on:
+  workflow_dispatch:
+    inputs:
+      cities:
+        description: 'Extract city/state and coordinates for articles without them'
+        type: boolean
+        default: true
+      images:
+        description: 'Look for thumbnails on articles without one'
+        type: boolean
+        default: true
+      force_cities:
+        description: 'Redo places even where one is already recorded'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      - name: Places
+        if: ${{ inputs.cities }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: node scripts/backfill-cities.mjs ${{ inputs.force_cities && '--force' || '' }}
+
+      - name: Thumbnails
+        if: ${{ inputs.images }}
+        run: node scripts/backfill-images.mjs --limit 300
+
+      - name: Commit
+        run: |
+          git config user.name  'urban-lab-radar[bot]'
+          git config user.email 'actions@github.com'
+          git add site/data/
+          if git diff --staged --quiet; then
+            echo 'Nothing changed.'
+          else
+            git commit -m "data: backfill $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v5
