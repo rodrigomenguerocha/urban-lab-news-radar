@@ -7,6 +7,14 @@
     "lat": 30.2711,
     "lng": -97.7437
   },
+  "Baltimore, MD": {
+    "lat": 39.2909,
+    "lng": -76.6108
+  },
+  "Beverly Hills, CA": {
+    "lat": 34.0697,
+    "lng": -118.3963
+  },
   "Blaine, WA": {
     "lat": 48.9881,
     "lng": -122.7436
@@ -14,6 +22,22 @@
   "Boca Raton, FL": {
     "lat": 26.3587,
     "lng": -80.0831
+  },
+  "Boston, MA": {
+    "lat": 42.3588,
+    "lng": -71.0578
+  },
+  "CA": {
+    "lat": 36.7015,
+    "lng": -118.756
+  },
+  "California City, CA": {
+    "lat": 35.1259,
+    "lng": -117.9599
+  },
+  "Charlotte, NC": {
+    "lat": 35.2272,
+    "lng": -80.8431
   },
   "Chicago, IL": {
     "lat": 41.8756,
@@ -27,9 +51,17 @@
     "lat": 42.3316,
     "lng": -83.0466
   },
+  "Highgate, VT": {
+    "lat": 44.9387,
+    "lng": -73.0447
+  },
   "Hillsboro, OR": {
     "lat": 45.5229,
     "lng": -122.9898
+  },
+  "Jacksonville, FL": {
+    "lat": 30.3262,
+    "lng": -81.6579
   },
   "Lakewood, CO": {
     "lat": 39.7086,
@@ -51,17 +83,53 @@
     "lat": 38.7078,
     "lng": -9.1366
   },
+  "Los Angeles, CA": {
+    "lat": 34.0537,
+    "lng": -118.2428
+  },
+  "Morristown, NJ": {
+    "lat": 40.797,
+    "lng": -74.481
+  },
+  "Nashville, TN": {
+    "lat": 36.1623,
+    "lng": -86.7743
+  },
   "New Carrollton, MD": {
     "lat": 38.9698,
     "lng": -76.88
+  },
+  "New York City, NY": {
+    "lat": 40.7127,
+    "lng": -74.006
   },
   "New York, NY": {
     "lat": 40.7127,
     "lng": -74.006
   },
+  "NY": {
+    "lat": 43.1562,
+    "lng": -75.845
+  },
+  "Philadelphia, PA": {
+    "lat": 39.9527,
+    "lng": -75.1635
+  },
+  "Portsmouth, NH": {
+    "lat": 43.0751,
+    "lng": -70.7602
+  },
   "Queens, NY": {
     "lat": 40.7135,
     "lng": -73.8283
+  },
+  "RI": {
+    "lat": 41.7962,
+    "lng": -71.5992
+  },
+  "Richmond, VA": {
+    "lat": 37.5385,
+    "lng": -77.4343
   },
   "San Diego, CA": {
     "lat": 32.7174,
@@ -71,8 +139,24 @@
     "lat": 47.6038,
     "lng": -122.3301
   },
+  "Somerville, MA": {
+    "lat": 42.3876,
+    "lng": -71.0995
+  },
+  "Surprise, AZ": {
+    "lat": 33.6292,
+    "lng": -112.3681
+  },
+  "Tahoe City, CA": {
+    "lat": 39.1689,
+    "lng": -120.1435
+  },
   "Whitewater, WI": {
     "lat": 42.834,
     "lng": -88.7307
+  },
+  "Winston-Salem, NC": {
+    "lat": 36.0998,
+    "lng": -80.2441
   }
 }

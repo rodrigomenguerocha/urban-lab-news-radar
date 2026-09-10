@@ -11,7 +11,10 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "highgate-affordable-housing-infrastructure",
@@ -21,7 +24,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Highgate",
+      "state": "VT",
+      "place": "Highgate, VT",
+      "lat": 44.9387,
+      "lng": -73.0447
     },
     {
       "id": "austin-red-river-music-district",
@@ -31,7 +39,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Austin",
+      "state": "TX",
+      "place": "Austin, TX",
+      "lat": 30.2711,
+      "lng": -97.7437
     },
     {
       "id": "beverly-hills-robertson-senior-housing",
@@ -41,7 +54,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Beverly Hills",
+      "state": "CA",
+      "place": "Beverly Hills, CA",
+      "lat": 34.0697,
+      "lng": -118.3963
     },
     {
       "id": "richmond-diamond-district-lawsuit",
@@ -51,7 +69,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Richmond",
+      "state": "VA",
+      "place": "Richmond, VA",
+      "lat": 37.5385,
+      "lng": -77.4343
     },
     {
       "id": "jacksonville-ai-housing-protection",
@@ -62,7 +85,12 @@
       "summary": "Jacksonville, Florida uses an AI-based early-warning system to help protect generational homeowners from losing property to institutional investors, winning a 2026 Smart Cities Dive Community Project Award.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://imgproxy.divecdn.com/qS2xKBIwtQ7Ap5734fHTPPHvBC9FOJ71ZsnAXV_XXeY/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9MSVNDX1RlYW0uanBlZw==.webp"
+      "image": "https://imgproxy.divecdn.com/qS2xKBIwtQ7Ap5734fHTPPHvBC9FOJ71ZsnAXV_XXeY/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9MSVNDX1RlYW0uanBlZw==.webp",
+      "city": "Jacksonville",
+      "state": "FL",
+      "place": "Jacksonville, FL",
+      "lat": 30.3262,
+      "lng": -81.6579
     },
     {
       "id": "leon-county-manufactured-homes",
@@ -72,7 +100,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Leon County",
+      "state": "FL",
+      "place": "Leon County, FL",
+      "lat": 30.4683,
+      "lng": -84.2549
     },
     {
       "id": "rhode-island-vacation-home-tax",
@@ -82,7 +115,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "RI",
+      "place": "RI",
+      "lat": 41.7962,
+      "lng": -71.5992
     },
     {
       "id": "tahoe-city-workforce-housing",
@@ -92,7 +130,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Tahoe City",
+      "state": "CA",
+      "place": "Tahoe City, CA",
+      "lat": 39.1689,
+      "lng": -120.1435
     },
     {
       "id": "la-arts-district-transformation",
@@ -102,7 +145,12 @@
       "date": "2026-09-10",
       "summary": "",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Los Angeles",
+      "state": "CA",
+      "place": "Los Angeles, CA",
+      "lat": 34.0537,
+      "lng": -118.2428
     },
     {
       "id": "cms-students-net-zero-buildings",
@@ -112,7 +160,12 @@
       "date": "2026-09-09",
       "summary": "",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Charlotte",
+      "state": "NC",
+      "place": "Charlotte, NC",
+      "lat": 35.2272,
+      "lng": -80.8431
     },
     {
       "id": "ca-civic-center-microgrid",
@@ -122,7 +175,12 @@
       "date": "2026-09-09",
       "summary": "",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "California City",
+      "state": "CA",
+      "place": "California City, CA",
+      "lat": 35.1259,
+      "lng": -117.9599
     },
     {
       "id": "portsmouth-nh-housing-policy",
@@ -132,7 +190,12 @@
       "date": "2026-09-09",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Portsmouth",
+      "state": "NH",
+      "place": "Portsmouth, NH",
+      "lat": 43.0751,
+      "lng": -70.7602
     },
     {
       "id": "surprise-resi-approval",
@@ -142,7 +205,12 @@
       "date": "2026-09-09",
       "summary": "",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Surprise",
+      "state": "AZ",
+      "place": "Surprise, AZ",
+      "lat": 33.6292,
+      "lng": -112.3681
     },
     {
       "id": "somerville-90-washington-redevelopment",
@@ -152,7 +220,12 @@
       "date": "2026-09-09",
       "summary": "",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Somerville",
+      "state": "MA",
+      "place": "Somerville, MA",
+      "lat": 42.3876,
+      "lng": -71.0995
     },
     {
       "id": "austin-red-river-cultural-district-2",
@@ -162,7 +235,12 @@
       "date": "2026-09-08",
       "summary": "",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Austin",
+      "state": "TX",
+      "place": "Austin, TX",
+      "lat": 30.2711,
+      "lng": -97.7437
     },
     {
       "id": "boston-26-court-street-electrification",
@@ -172,7 +250,12 @@
       "date": "2026-09-08",
       "summary": "",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Boston",
+      "state": "MA",
+      "place": "Boston, MA",
+      "lat": 42.3588,
+      "lng": -71.0578
     },
     {
       "id": "nyc-coop-condo-ll97-amendments",
@@ -182,7 +265,12 @@
       "date": "2026-09-08",
       "summary": "",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "New York",
+      "state": "NY",
+      "place": "New York, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "austin-red-river-cultural-district",
@@ -192,7 +280,12 @@
       "date": "2026-09-08",
       "summary": "",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Austin",
+      "state": "TX",
+      "place": "Austin, TX",
+      "lat": 30.2711,
+      "lng": -97.7437
     },
     {
       "id": "trd-ll97-credits",
@@ -203,7 +296,12 @@
       "summary": "(paywall)",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://static.therealdeal.com/wp-content/uploads/2026/09/Council-progressives-revive-fight-over-Local-Law-97-credits.jpg"
+      "image": "https://static.therealdeal.com/wp-content/uploads/2026/09/Council-progressives-revive-fight-over-Local-Law-97-credits.jpg",
+      "city": "New York",
+      "state": "NY",
+      "place": "New York, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "asheville-zoning",
@@ -214,7 +312,12 @@
       "summary": "Asheville's council approved changes allowing duplexes and accessory dwelling units more widely, as part of a rewrite of the city's unified development ordinance.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://wlos.com/resources/media2/16x9/1280/1320/center/90/01f0e0a5-290a-40a2-ab42-24e3fe3b4327-PAVLDUPLEXESHOUSINGBUCKET.mxfframe849.png"
+      "image": "https://wlos.com/resources/media2/16x9/1280/1320/center/90/01f0e0a5-290a-40a2-ab42-24e3fe3b4327-PAVLDUPLEXESHOUSINGBUCKET.mxfframe849.png",
+      "city": "Asheville",
+      "state": "NC",
+      "place": "Asheville, NC",
+      "lat": 35.5954,
+      "lng": -82.5508
     },
     {
       "id": "trd-road-act-law",
@@ -225,7 +328,10 @@
       "summary": "Congress passed the ROAD to Housing Act with veto-proof margins, 85-5 in the Senate and 358-32 in the House, tying federal housing funding to local zoning reform and streamlining environmental review.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://static.therealdeal.com/wp-content/uploads/2026/07/21st-Century-ROAD-to-Housing-Act-is-Now-Law.jpg"
+      "image": "https://static.therealdeal.com/wp-content/uploads/2026/07/21st-Century-ROAD-to-Housing-Act-is-Now-Law.jpg",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "njtransit-linden",
@@ -236,7 +342,12 @@
       "summary": "NJEDA and NJ TRANSIT issued a request for qualifications and proposals to redevelop a site at Linden Train Station, with proposals due September 23, 2026.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://www.nj.gov/governor/assets/"
+      "image": "https://www.nj.gov/governor/assets/",
+      "city": "Linden",
+      "state": "NJ",
+      "place": "Linden, NJ",
+      "lat": 40.622,
+      "lng": -74.2446
     },
     {
       "id": "newsom-housing-reforms",
@@ -247,7 +358,12 @@
       "summary": "California signed a housing affordability package the state estimates will cut affordable construction costs by $60,000 to $70,000 per unit through One-Stop Shop financing and impact fee changes.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://www.gov.ca.gov/wp-content/uploads/2026/07/hb1.jpg"
+      "image": "https://www.gov.ca.gov/wp-content/uploads/2026/07/hb1.jpg",
+      "city": "",
+      "state": "CA",
+      "place": "CA",
+      "lat": 36.7015,
+      "lng": -118.756
     },
     {
       "id": "chicago-west-englewood",
@@ -258,7 +374,12 @@
       "summary": "Chicago picked two mixed-use buildings for West Englewood through a city RFP, selling the lots for $1 each against an $18 million total project cost.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://chicagoyimby.com/wp-content/uploads/2026/07/63rd-Street-RFP-05-scaled.png"
+      "image": "https://chicagoyimby.com/wp-content/uploads/2026/07/63rd-Street-RFP-05-scaled.png",
+      "city": "Chicago",
+      "state": "IL",
+      "place": "Chicago, IL",
+      "lat": 41.8756,
+      "lng": -87.6244
     },
     {
       "id": "forbes-road-act",
@@ -268,7 +389,10 @@
       "date": "2026-06-30",
       "summary": "Analysis of the bipartisan ROAD to Housing Act and which of its supply-side provisions are likely to move production.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "blaine-downtown",
@@ -278,7 +402,12 @@
       "date": "2026-06-08",
       "summary": "Blaine, Washington released an RFP for a downtown multifamily redevelopment, issued June 8 with proposals due July 8, 2026.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Blaine",
+      "state": "WA",
+      "place": "Blaine, WA",
+      "lat": 48.9881,
+      "lng": -122.7436
     },
     {
       "id": "forbes-artphilly",
@@ -288,7 +417,12 @@
       "date": "2026-05-26",
       "summary": "Philadelphia's first ArtPhilly festival ran May 27 to July 2, 2026, with citywide projects made by and with local artists across music, theater, dance and visual art.",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Philadelphia",
+      "state": "PA",
+      "place": "Philadelphia, PA",
+      "lat": 39.9527,
+      "lng": -75.1635
     },
     {
       "id": "fta-tod-nofo-2026",
@@ -299,7 +433,10 @@
       "summary": "FTA made about $28.5 million available for FY 2026 TOD planning grants, with applications due July 10, 2026.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://www.transit.dot.gov/themes/custom/dot_cms/images/seal_dot.png"
+      "image": "https://www.transit.dot.gov/themes/custom/dot_cms/images/seal_dot.png",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "mpac-expansion",
@@ -310,7 +447,12 @@
       "summary": "The Mayo Performing Arts Center broke ground on a $65 million expansion pairing a new arts center with a restoration of its historic theater.",
       "tag": "Culture Led Development",
       "found": "2026-09-10",
-      "image": "https://morristowngreen.com/wp-content/uploads/2026/05/2.-View-from-corner-of-Pine-King.jpg"
+      "image": "https://morristowngreen.com/wp-content/uploads/2026/05/2.-View-from-corner-of-Pine-King.jpg",
+      "city": "Morristown",
+      "state": "NJ",
+      "place": "Morristown, NJ",
+      "lat": 40.797,
+      "lng": -74.481
     },
     {
       "id": "uncsa-stevens-center",
@@ -321,7 +463,12 @@
       "summary": "The university revealed phase two design plans for the Stevens Center, its downtown Winston-Salem performance venue.",
       "tag": "Culture Led Development",
       "found": "2026-09-10",
-      "image": "https://www.uncsa.edu/news/img/2026/04/Stevens-Center-Rendering-tout.jpg"
+      "image": "https://www.uncsa.edu/news/img/2026/04/Stevens-Center-Rendering-tout.jpg",
+      "city": "Winston-Salem",
+      "state": "NC",
+      "place": "Winston-Salem, NC",
+      "lat": 36.0998,
+      "lng": -80.2441
     },
     {
       "id": "nyc-small-lots",
@@ -332,7 +479,12 @@
       "summary": "Speaker Menin proposed construction code reforms the Council says could yield up to 35,000 apartments on small, irregularly shaped lots across the five boroughs.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://council.nyc.gov/press/wp-content/uploads/sites/56/2020/04/nycc_press.jpg"
+      "image": "https://council.nyc.gov/press/wp-content/uploads/sites/56/2020/04/nycc_press.jpg",
+      "city": "New York",
+      "state": "NY",
+      "place": "New York, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "san-diego-e-street",
@@ -343,7 +495,12 @@
       "summary": "The San Diego MTS board authorized a disposition and development agreement with Bayview Family Housing for the E Street TOD, whose affordable component is being delivered by Eden Housing.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://ceqanet.lci.ca.gov/Content/CeqaIcon256.png"
+      "image": "https://ceqanet.lci.ca.gov/Content/CeqaIcon256.png",
+      "city": "San Diego",
+      "state": "CA",
+      "place": "San Diego, CA",
+      "lat": 32.7174,
+      "lng": -117.1628
     },
     {
       "id": "forbes-lakewood-vote",
@@ -353,7 +510,12 @@
       "date": "2026-04-03",
       "summary": "Frames Lakewood's zoning ballot measure as a test of whether local electorates will accept upzoning when it is put to them directly.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Lakewood",
+      "state": "CO",
+      "place": "Lakewood, CO",
+      "lat": 39.7086,
+      "lng": -105.0847
     },
     {
       "id": "trd-tiny-lots",
@@ -364,7 +526,10 @@
       "summary": "(paywall)",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://static.therealdeal.com/wp-content/uploads/2026/04/NY_City-Council-Exclusive.jpg"
+      "image": "https://static.therealdeal.com/wp-content/uploads/2026/04/NY_City-Council-Exclusive.jpg",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "nyc-harborfront-districts",
@@ -375,7 +540,12 @@
       "summary": "A 630-foot public art installation on immigrant stories anchors waterfront growth; a Willets Point art project pairs the Department of Cultural Affairs and NYCEDC with Queens Development Group.",
       "tag": "Culture Led Development",
       "found": "2026-09-10",
-      "image": "https://fs.pagegun.com/p/77p4bI9K/media/b1ce5349.webp"
+      "image": "https://fs.pagegun.com/p/77p4bI9K/media/b1ce5349.webp",
+      "city": "New York",
+      "state": "NY",
+      "place": "New York, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "costar-silicon-forest",
@@ -385,7 +555,12 @@
       "date": "2026-03",
       "summary": "Wood Partners' 594-unit Astral and Revel by Alta in Hillsboro, built in cooperation with the city, won a 2026 CoStar Impact Award for Portland multifamily development of the year.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Hillsboro",
+      "state": "OR",
+      "place": "Hillsboro, OR",
+      "lat": 45.5229,
+      "lng": -122.9898
     },
     {
       "id": "planetizen-the-gap",
@@ -395,7 +570,10 @@
       "date": "2026-03",
       "summary": "The 2026 Gap report finds a shortage of 7.2 million homes for the lowest-income renters, 35 available homes per 100 extremely low-income households, and 74% of those renters spending over half their income on housing.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "forbes-policy-inflection",
@@ -405,7 +583,10 @@
       "date": "2026-01-26",
       "summary": "Sets out the federal and state policy shifts expected to reshape housing supply and affordability through 2026.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "seattle-beps-guide",
@@ -415,7 +596,12 @@
       "date": "2026-01",
       "summary": "Seattle's standard requires most buildings over 20,000 sq ft to reach net zero emissions between 2041 and 2050; buildings account for 40% of the city's greenhouse gas emissions.",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Seattle",
+      "state": "WA",
+      "place": "Seattle, WA",
+      "lat": 47.6038,
+      "lng": -122.3301
     },
     {
       "id": "lacma-geffen-galleries",
@@ -426,7 +612,12 @@
       "summary": "LACMA set an April 2026 public opening for the David Geffen Galleries, including the Steve Tisch Theater south of Wilshire Boulevard for screenings, lectures and performances.",
       "tag": "Culture Led Development",
       "found": "2026-09-10",
-      "image": "https://unframed.lacma.org/sites/default/files/field/image/2.%20The%20David%20Geffen%20Galleries%20at%20LACMA%2C%20photo%20%C2%A9%20Museum%20Associates_LACMA.jpg"
+      "image": "https://unframed.lacma.org/sites/default/files/field/image/2.%20The%20David%20Geffen%20Galleries%20at%20LACMA%2C%20photo%20%C2%A9%20Museum%20Associates_LACMA.jpg",
+      "city": "Los Angeles",
+      "state": "CA",
+      "place": "Los Angeles, CA",
+      "lat": 34.0537,
+      "lng": -118.2428
     },
     {
       "id": "planetizen-lucas-museum",
@@ -436,7 +627,12 @@
       "date": "2025-02",
       "summary": "The Lucas Museum turns a former parking lot into galleries, theaters and landscaped public space, with commitments on local hiring and inclusive design.",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Los Angeles",
+      "state": "CA",
+      "place": "Los Angeles, CA",
+      "lat": 34.0537,
+      "lng": -118.2428
     },
     {
       "id": "terner-ca-preview",
@@ -447,7 +643,12 @@
       "summary": "California's session shifts from land use rules toward construction costs, production streamlining and home insurance, with SB 1216 creating a pro-housing designation tied to production outcomes.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://ternercenter.berkeley.edu/wp-content/uploads/2026/03/CACapitolFlowers1200x800.png"
+      "image": "https://ternercenter.berkeley.edu/wp-content/uploads/2026/03/CACapitolFlowers1200x800.png",
+      "city": "",
+      "state": "CA",
+      "place": "CA",
+      "lat": 36.7015,
+      "lng": -118.756
     },
     {
       "id": "cpe-green-outlook",
@@ -457,7 +658,10 @@
       "date": "",
       "summary": "Frames 2026 as the proof phase, when measured operational and embodied carbon cuts start to affect terms from lenders, tenants and regulators.",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "tpac-nashville-big",
@@ -468,7 +672,12 @@
       "summary": "BIG with William Rawn Associates and HASTINGS unveiled a 307,000 sq ft cultural complex for Nashville's East Bank, with construction expected to start in 2027 and finish in 2030.",
       "tag": "Culture Led Development",
       "found": "2026-09-10",
-      "image": "https://images.adsttc.com/media/images/69e2/0309/1afd/7001/8891/3f31/large_jpg/big-reveals-design-for-tennessee-performing-arts-center-in-nashville-united-states_7.jpg?1776419629"
+      "image": "https://images.adsttc.com/media/images/69e2/0309/1afd/7001/8891/3f31/large_jpg/big-reveals-design-for-tennessee-performing-arts-center-in-nashville-united-states_7.jpg?1776419629",
+      "city": "Nashville",
+      "state": "TN",
+      "place": "Nashville, TN",
+      "lat": 36.1623,
+      "lng": -86.7743
     },
     {
       "id": "uli-nzi-top10",
@@ -478,7 +687,10 @@
       "date": "",
       "summary": "Ten findings from ULI's Net Zero Imperative on what moves building decarbonization from plan to executed retrofit.",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "uli-industrial-ppp",
@@ -488,7 +700,10 @@
       "date": "",
       "summary": "ULI examines whether adding philanthropic capital alongside public and private money can finance urban industrial projects that neither side funds alone.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "bisnow-carbon-capture",
@@ -499,7 +714,12 @@
       "summary": "Carbon capture retrofits can lower measured emissions at NYC buildings without counting toward Local Law 97 compliance, leaving the penalties in place.",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://a-us.storyblok.com/f/571151439874644/1614x1098/b535c6855a/64553ca57e09b-screenshot-2023-05-05-at-13-26-59.png"
+      "image": "https://a-us.storyblok.com/f/571151439874644/1614x1098/b535c6855a/64553ca57e09b-screenshot-2023-05-05-at-13-26-59.png",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "las-cruces-lohman",
@@ -510,7 +730,12 @@
       "summary": "Las Cruces is seeking a master developer for about 84 acres of city-owned land in the East Lohman corridor, to be built out as a walkable center with housing, health services, commercial, civic and open space uses.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://lascruces.gov/wp-content/uploads/2026/04/East-Lohman-1.jpg"
+      "image": "https://lascruces.gov/wp-content/uploads/2026/04/East-Lohman-1.jpg",
+      "city": "Las Cruces",
+      "state": "NM",
+      "place": "Las Cruces, NM",
+      "lat": 32.314,
+      "lng": -106.7798
     },
     {
       "id": "uli-congress-housing",
@@ -520,7 +745,10 @@
       "date": "",
       "summary": "The federal package directs HUD to develop model zoning codes by context and creates a $200 million annual Innovation Fund rewarding communities that adopt pro-housing policies.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "crains-ll97-loophole",
@@ -531,7 +759,12 @@
       "summary": "(paywall)",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://www.crainsnewyork.com/resizer/v2/FBOFNXUIFYJABTWSKTANJJYBZ4.jpg?auth=d93046dac4ad8d7d3cf28c64ef934e025e5de1ca610c061da409f5828d3f195c&width=1200#.jpg"
+      "image": "https://www.crainsnewyork.com/resizer/v2/FBOFNXUIFYJABTWSKTANJJYBZ4.jpg?auth=d93046dac4ad8d7d3cf28c64ef934e025e5de1ca610c061da409f5828d3f195c&width=1200#.jpg",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "uli-baltimore-placemaking",
@@ -541,7 +774,12 @@
       "date": "",
       "summary": "Baltimore's Downtown Rise strategy uses arts and entertainment to pull investment into the central business district; the Peale's move to the Reginald F. Lewis Museum came with a 400% attendance increase.",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Baltimore",
+      "state": "MD",
+      "place": "Baltimore, MD",
+      "lat": 39.2909,
+      "lng": -76.6108
     },
     {
       "id": "uli-nyc-coops-tap",
@@ -551,7 +789,12 @@
       "date": "",
       "summary": "A technical assistance panel maps LL97 compliance for limited-equity co-ops, where retrofit costs fall on low- and middle-income residents who provide much of the city's deeply affordable housing.",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "boca-raton-campus",
@@ -561,7 +804,12 @@
       "date": "",
       "summary": "Boca Raton approved a 99-year ground lease of about 7.8 acres to Boca Raton City Center LLC (Terra / Frisbie), retaining 17.5 acres; the agreements went to a March 10, 2026 referendum.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Boca Raton",
+      "state": "FL",
+      "place": "Boca Raton, FL",
+      "lat": 26.3587,
+      "lng": -80.0831
     },
     {
       "id": "planetizen-five-changes",
@@ -572,7 +820,10 @@
       "summary": "Argues every code update should include at least three moves: smaller minimum lot sizes, no parking minimums, and allowing manufactured housing.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://www.planetizen.com/files/images/shutterstock_2714409029.jpg"
+      "image": "https://www.planetizen.com/files/images/shutterstock_2714409029.jpg",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "creedmoor-esd-rfp",
@@ -582,7 +833,12 @@
       "date": "",
       "summary": "Empire State Development opened an RFP for phase one of Creedmoor, converting underused state land in eastern Queens into 100% affordable rental and ownership housing with community facilities, retail and open space.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "canary-nyc-zero-carbon",
@@ -593,7 +849,12 @@
       "summary": "Looks at the retrofit pathways available to the large NYC buildings facing the tightest Local Law 97 limits.",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://img.canarymedia.com/content/uploads/resized-empire-state-building.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=630&q=82&w=1200&s=5a8823be202edd0a0c16042e9f1b4daa"
+      "image": "https://img.canarymedia.com/content/uploads/resized-empire-state-building.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=630&q=82&w=1200&s=5a8823be202edd0a0c16042e9f1b4daa",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "colorado-lakewood-p3",
@@ -603,7 +864,12 @@
       "date": "",
       "summary": "Colorado's Department of Personnel and Administration entered a P3 long-term ground lease to redevelop state parcels in Lakewood for affordable and attainable housing plus a childcare facility.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Lakewood",
+      "state": "CO",
+      "place": "Lakewood, CO",
+      "lat": 39.7086,
+      "lng": -105.0847
     },
     {
       "id": "uli-ll97-deal",
@@ -613,7 +879,12 @@
       "date": "",
       "summary": "A primer on Local Law 97's emissions caps, which reach more than 50,000 NYC buildings over 25,000 sq ft, and how compliance risk gets priced into transactions.",
       "tag": "Net Zero Cities",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "bisnow-east-harlem",
@@ -624,7 +895,12 @@
       "summary": "NYCEDC will issue an RFP for roughly 140 apartments on city-owned land in East Harlem, the first of three municipal sites it plans to bring to private developers.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://a-us.storyblok.com/f/571151439874644/1851x1263/bbd21bf369/69d6c1949cd4e-screenshot-2026-04-08-at-16-58-44.png"
+      "image": "https://a-us.storyblok.com/f/571151439874644/1851x1263/bbd21bf369/69d6c1949cd4e-screenshot-2026-04-08-at-16-58-44.png",
+      "city": "New York City",
+      "state": "NY",
+      "place": "New York City, NY",
+      "lat": 40.7127,
+      "lng": -74.006
     },
     {
       "id": "wmata-new-carrollton",
@@ -634,7 +910,12 @@
       "date": "",
       "summary": "The next joint-development phase broke ground at New Carrollton, where the station transformation has added close to 600 homes, 3,500 sq ft of retail and 500,000 sq ft of office space.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "New Carrollton",
+      "state": "MD",
+      "place": "New Carrollton, MD",
+      "lat": 38.9698,
+      "lng": -76.88
     },
     {
       "id": "uli-placemaking-models",
@@ -644,7 +925,10 @@
       "date": "",
       "summary": "A ULI report sets out replicable creative placemaking models and the artist-community-owner partnerships they depend on.",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "creedmoor-trade",
@@ -655,7 +939,12 @@
       "summary": "Trade coverage of the state's Creedmoor phase-one solicitation, with the program and submission requirements for development teams.",
       "tag": "Public Private Development",
       "found": "2026-09-10",
-      "image": "https://www.newyorkconstructionreport.com/wp-content/uploads/2025/12/queens.png"
+      "image": "https://www.newyorkconstructionreport.com/wp-content/uploads/2025/12/queens.png",
+      "city": "Queens",
+      "state": "NY",
+      "place": "Queens, NY",
+      "lat": 40.7135,
+      "lng": -73.8283
     },
     {
       "id": "crains-ll97-compliance",
@@ -666,7 +955,12 @@
       "summary": "(paywall)",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://www.crainsnewyork.com/resizer/v2/MKZJY35LI33EN5ELXF4RN6QTP4.jpg?auth=d9788d98f5970abd9f595925060ca48419606b1e40c13317ae91fa75cbee0149#.jpg"
+      "image": "https://www.crainsnewyork.com/resizer/v2/MKZJY35LI33EN5ELXF4RN6QTP4.jpg?auth=d9788d98f5970abd9f595925060ca48419606b1e40c13317ae91fa75cbee0149#.jpg",
+      "city": "",
+      "state": "NY",
+      "place": "NY",
+      "lat": 43.1562,
+      "lng": -75.845
     },
     {
       "id": "detroit-archdale",
@@ -676,7 +970,12 @@
       "date": "",
       "summary": "Detroit's Housing and Revitalization Department is seeking a development team for a mixed-use project on the city-owned Archdale Street properties.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Detroit",
+      "state": "MI",
+      "place": "Detroit, MI",
+      "lat": 42.3316,
+      "lng": -83.0466
     },
     {
       "id": "whitewater-jefferson",
@@ -686,7 +985,12 @@
       "date": "",
       "summary": "Whitewater's Community Development Authority is seeking development partners for a mixed-use redevelopment on a prominent downtown corner.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "Whitewater",
+      "state": "WI",
+      "place": "Whitewater, WI",
+      "lat": 42.834,
+      "lng": -88.7307
     },
     {
       "id": "facilitiesdive-bps-map",
@@ -697,7 +1001,10 @@
       "summary": "A tracker mapping every enacted and pending US building performance standard, updated for 2026.",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://imgproxy.divecdn.com/q0Szi-aPYyeDridzQxvaSyYoxvxmg94_9NyneGKonLM/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9HZXR0eUltYWdlcy00ODYxNjI4NjcuanBn.webp"
+      "image": "https://imgproxy.divecdn.com/q0Szi-aPYyeDridzQxvaSyYoxvxmg94_9NyneGKonLM/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9HZXR0eUltYWdlcy00ODYxNjI4NjcuanBn.webp",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "uli-art-of-place",
@@ -707,7 +1014,10 @@
       "date": "",
       "summary": "Session on the measurable return of building art into developments, and how it affects tenant attraction, property value and local identity.",
       "tag": "Culture Led Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "uli-ppp-playbook",
@@ -717,7 +1027,10 @@
       "date": "",
       "summary": "Practitioner guidance on structuring public-private deals: recovery through prepared-land sales, ground leases or an equity position exited after permanent financing.",
       "tag": "Public Private Development",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "constructiondive-bps",
@@ -728,7 +1041,10 @@
       "summary": "More than 40 US cities and states now have building performance standards enacted or in development, pushing owners toward efficiency and emissions cuts.",
       "tag": "Net Zero Cities",
       "found": "2026-09-10",
-      "image": "https://imgproxy.divecdn.com/FXTE12YaypV085swR_VYUSevgZme223LE0u47t29IT0/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9Cb3N0b25fb2ZmaWNlX2J1aWxkaW5ncy5qcGc=.webp"
+      "image": "https://imgproxy.divecdn.com/FXTE12YaypV085swR_VYUSevgZme223LE0u47t29IT0/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9Cb3N0b25fb2ZmaWNlX2J1aWxkaW5ncy5qcGc=.webp",
+      "city": "",
+      "state": "",
+      "place": ""
     },
     {
       "id": "smartcities-zoning",
@@ -739,7 +1055,12 @@
       "summary": "Survey of the zoning and permitting changes cities are making going into 2026, including Austin's new districts for townhomes, cottage courts and small-scale multifamily.",
       "tag": "Housing Affordability",
       "found": "2026-09-10",
-      "image": "https://imgproxy.divecdn.com/r6yD3vV76nU0Kuli1p7ueJm_Y_w8RF1zi8ATJMZACNM/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9HZXR0eUltYWdlcy05MjM1MTk3NzhfSGJCOTFwRy5qcGc=.webp"
+      "image": "https://imgproxy.divecdn.com/r6yD3vV76nU0Kuli1p7ueJm_Y_w8RF1zi8ATJMZACNM/g:ce/rs:fit:770:435/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9HZXR0eUltYWdlcy05MjM1MTk3NzhfSGJCOTFwRy5qcGc=.webp",
+      "city": "Austin",
+      "state": "TX",
+      "place": "Austin, TX",
+      "lat": 30.2711,
+      "lng": -97.7437
     },
     {
       "id": "uli-zoning-reforms",
@@ -749,7 +1070,10 @@
       "date": "",
       "summary": "A review of the zoning reforms cities are using to expand supply, and where they have measurably changed production rather than only permissions.",
       "tag": "Housing Affordability",
-      "found": "2026-09-10"
+      "found": "2026-09-10",
+      "city": "",
+      "state": "",
+      "place": ""
     }
   ]
 }
